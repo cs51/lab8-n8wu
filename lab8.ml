@@ -176,7 +176,6 @@ Exercise 5: Register these two news organizations as listeners to the
 newswire event.
 ......................................................................*)
   
-(* .. *)
 let x1 = add_listener newswire fakeNewsNetwork ;;
 let x2 = add_listener newswire buzzFake ;;
 
@@ -190,8 +189,6 @@ let h3 = "bactrian camels can weigh up to 2200lbs!" ;;
 Exercise 6: Finally, fire newswire events with the above three
 headlines, and observe what happens!
 ......................................................................*)
-  
-(* .. *)
 
 let _ = fire_event newswire h1 ;;
 let _ = fire_event newswire h2 ;;
@@ -227,14 +224,16 @@ by registering appropriate listeners, one for each news network,
 waiting for the publish event.
 ......................................................................*)
 
-let receive_report = fun _ -> ;;
+let receive_report (s : string): unit =
+ ignore add_listener publish s;;
 
 (*......................................................................
 Exercise 10: Register the receieve_report listener to listen for the
 newswire event.
 ......................................................................*)
 
-(* .. *)
+let x3 = add_listener publish fakeNewsNetwork ;;
+let x4 = add_listener publish buzzFake ;;
 
 (* Here are some new headlines to use for testing this part. *)
 
